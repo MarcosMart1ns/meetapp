@@ -9,5 +9,6 @@ routes.get('/',(req,res)=>{
 })
 
 routes.post('/user', UserController.store);
+routes.put('/user', UserController.update);
 
 export default routes;

@@ -6,7 +6,7 @@ const models = [User];
 
 class Database{
     constructor(){
-
+        this.init();
     }
     init(){
         this.connection = new Sequelize(databaseConfig);
