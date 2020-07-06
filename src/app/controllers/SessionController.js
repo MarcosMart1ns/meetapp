@@ -1,9 +1,20 @@
 import User from '../models/User'
 import jwt from 'jsonwebtoken'
 import auth from '../../config/auth'
+import * as Yup from "yup";
 
 class SessionController{
     async create(req,res){
+        const schema= Yup.object().shape({
+            name: Yup.string().required(),
+            email: Yup.string().email().required(),
+            password: Yup.string().required()
+        })
+
+        if(!(await schema.isValid(req.body))){
+            return res.status(400).json({error: "erro na validação"})
+        }
+
         const { email, password } = req.body;
 
         const user = await User.findOne({where: { email }} )
@@ -16,7 +27,7 @@ class SessionController{
             return res.status(401).json({ erro: "Senha incorreta"})
         }
         
-        const { name } = user;
+        const { id, name } = user;
 
         return res.status(201).json({
             name,
