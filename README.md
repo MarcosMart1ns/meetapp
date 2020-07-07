@@ -8,7 +8,8 @@
 	<li>Atualização dos dados do usuário logado</li>
 </ul>
 
-
+<br>
+<br>
 <h2>Rotas: </h2>
 <p> Método HTTP: /Rota</p>
 <p>
@@ -91,10 +92,10 @@ Em caso de mudança de senha deverá ser informada a senha antiga, informar a no
 }
 
 ```
+<br><br>
 
-<h1></h1>
 
-### Fazendo Funcionar
+## Fazendo Funcionar
 
 Antes de tudo é necessário ter nodejs e npm instalado.
 
@@ -127,9 +128,9 @@ Pronto a aplicação estará pronta para ser testada, agora só usar alguma apli
 
 
 
-<h1></h1>
+<br><br>
 
-### Tecnologias usadas:
+## Tecnologias usadas:
 	- Node.js
 	- Express.Js
 	- Sqlite
