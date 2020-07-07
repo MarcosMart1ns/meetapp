@@ -98,7 +98,7 @@ Em caso de mudança de senha deverá ser informada a senha antiga, informar a no
 
 Antes de tudo é necessário ter nodejs e npm instalado.
 
-Abra o terminal na mesma da aplicação e execute:
+Abra o terminal no mesmo diretório da aplicação e execute:
 
 ```bash
 
