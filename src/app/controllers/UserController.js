@@ -22,6 +22,7 @@ class UserController{
         const {name, email, password} = await User.create(req.body);
        
         return res.status(201).json({
+            message: "User Created!",
             name, 
             email, 
             password

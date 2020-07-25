@@ -6,7 +6,6 @@ import * as Yup from "yup";
 class SessionController{
     async create(req,res){
         const schema= Yup.object().shape({
-            name: Yup.string().required(),
             email: Yup.string().email().required(),
             password: Yup.string().required()
         })
