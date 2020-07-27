@@ -4,6 +4,7 @@ import multer from 'multer';
 import UserController from './app/controllers/UserController';
 import SessionController from "./app/controllers/SessionController";
 import FilesController from "./app/controllers/FilesController";
+import MeetupController from './app/controllers/MeetupController';
 
 import authMid from './app/middlewares/auth'
 import multerConfig from './config/multer'
@@ -23,5 +24,6 @@ routes.use(authMid); //todas as requisições abaixo o usuário deve estar logad
 
 routes.put('/user', UserController.update);
 routes.post('/files', upload.single('avatar'),FilesController.store);
+routes.post('/meetup',MeetupController.store);
 
 export default routes;
