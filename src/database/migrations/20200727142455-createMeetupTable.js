@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('meetup',{
+    await queryInterface.createTable('meetups',{
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -32,7 +32,7 @@ module.exports = {
       },
       creator :{
         type: Sequelize.INTEGER,
-        references: { model: 'user', key: 'id'},
+        references: { model: 'users', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: false,
@@ -51,6 +51,6 @@ module.exports = {
 
   down: async (queryInterface) => {
   
-    await queryInterface.dropTable('meetup');
+    await queryInterface.dropTable('meetups');
   }
 };

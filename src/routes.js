@@ -25,5 +25,7 @@ routes.use(authMid); //todas as requisições abaixo o usuário deve estar logad
 routes.put('/user', UserController.update);
 routes.post('/files', upload.single('avatar'),FilesController.store);
 routes.post('/meetup',MeetupController.store);
+routes.get('/meetup',MeetupController.index);
+routes.put('/meetup/:id',MeetupController.update);
 
 export default routes;
