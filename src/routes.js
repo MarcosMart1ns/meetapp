@@ -19,15 +19,17 @@ routes.get('/',(req,res)=>{
 
 routes.post('/user', UserController.store);
 routes.post('/login', SessionController.create );
+routes.get('/allmeetups', MeetupController.indexAll);
 
 routes.use(authMid); //todas as requisições abaixo o usuário deve estar logado;
 
 routes.put('/user', UserController.update);
 routes.post('/files', upload.single('avatar'),FilesController.store);
+
 routes.post('/meetup',MeetupController.store);
 routes.get('/meetup',MeetupController.index);
 routes.put('/meetup/:id',MeetupController.update);
 routes.delete('/meetup/:id', MeetupController.delete);
-routes.get('/allmeetups', MeetupController.indexAll);
+
 
 export default routes;

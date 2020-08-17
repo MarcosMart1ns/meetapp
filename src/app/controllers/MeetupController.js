@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { parseISO, isAfter,endOfDay,startOfDay } from 'date-fns';
+import { parseISO, isAfter,endOfDay,differenceInCalendarDays,startOfDay,endOfDay } from 'date-fns';
 import { Op } from 'sequelize';
 import Meetup from '../models/Meetup';
 import Files from '../models/Files'
@@ -58,8 +58,6 @@ class MeetupController{
 
         return res.status(200).json(meetups);
     }
-
-    
 
     async store ( req, res ){
         
@@ -132,8 +130,25 @@ class MeetupController{
     }
 
     async delete (req, res){
+        const { id } = req.params;
+        
+        const meetup = await Meetup.findByPk(id);
+        
+        if(!meetup){
+            return res.status(400).json({error: " This meetup doesn't exists or already deleted/canceled"});
+        }
+        
+        if(req.userId != meetup.creator){
+            return res.status(401).json({error: 'Unauthorized access! You can only cancel meetups made by you'})
+        }
 
-        return res.json();
+        const timeDiference = differenceInCalendarDays(meetup.date,new Date())
+
+        if(timeDiference<1){
+            return res.status(400).json({error: "is only possible to cancel a meetup that didn't passed"});
+        }
+        meetup.destroy();
+        return res.status(200).json({Sucess: "Meetup cancelled"});;
     }
 }
 
